@@ -1,10 +1,8 @@
 import { cn } from "@/lib/utils";
-import { ArrowUp, ArrowDown, Minus } from "lucide-react";
 
 interface StatCardProps {
   title: string;
   value: number;
-  previousValue?: number;
   className?: string;
   isLoading?: boolean;
   formatFn?: (value: number) => string;
@@ -13,30 +11,10 @@ interface StatCardProps {
 const StatCard = ({
   title,
   value,
-  previousValue,
   className,
   isLoading = false,
   formatFn = (num) => num.toLocaleString(),
 }: StatCardProps) => {
-  const percentChange = previousValue
-    ? ((value - previousValue) / previousValue) * 100
-    : null;
-
-  let trend;
-  if (percentChange === null) {
-    trend = null;
-  } else if (percentChange > 0) {
-    trend = { icon: ArrowUp, color: "text-red-500", value: percentChange };
-  } else if (percentChange < 0) {
-    trend = {
-      icon: ArrowDown,
-      color: "text-green-500",
-      value: Math.abs(percentChange),
-    };
-  } else {
-    trend = { icon: Minus, color: "text-gray-500", value: 0 };
-  }
-
   return (
     <div
       className={cn(
@@ -52,13 +30,6 @@ const StatCard = ({
         <>
           <div className="flex items-end space-x-1">
             <p className="text-3xl font-semibold">{formatFn(value)}</p>
-
-            {trend && (
-              <div className={`flex items-center ${trend.color} text-sm mb-1`}>
-                <trend.icon size={14} className="mr-1" />
-                <span>{trend.value.toFixed(1)}%</span>
-              </div>
-            )}
           </div>
         </>
       )}
