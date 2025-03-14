@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { fetchCountries, CountryData } from "@/services/covidApi";
 import DashboardLayout from "@/components/DashboardLayout";
