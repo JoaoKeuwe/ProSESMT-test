@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import {
   LineChart,
@@ -59,26 +58,29 @@ const DataChart = ({
     if (type === "line") {
       return (
         <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+          <LineChart
+            data={data}
+            margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
+          >
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-            <XAxis 
-              dataKey={xAxisKey} 
-              tick={axisStyle} 
+            <XAxis
+              dataKey={xAxisKey}
+              tick={axisStyle}
               tickMargin={10}
               stroke={isDarkMode ? "#fff" : "var(--foreground)"}
             />
-            <YAxis 
-              tick={axisStyle} 
+            <YAxis
+              tick={axisStyle}
               stroke={isDarkMode ? "#fff" : "var(--foreground)"}
             />
-            <Tooltip 
-              contentStyle={{ 
+            <Tooltip
+              contentStyle={{
                 backgroundColor: "var(--card)",
                 color: "var(--card-foreground)",
                 borderRadius: "8px",
                 boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
-                border: "1px solid var(--border)"
-              }} 
+                border: "1px solid var(--border)",
+              }}
             />
             <Legend />
             {dataKeys.map((dataKey) => (
@@ -101,26 +103,29 @@ const DataChart = ({
 
     return (
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+        <BarChart
+          data={data}
+          margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
+        >
           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-          <XAxis 
-            dataKey={xAxisKey} 
-            tick={axisStyle} 
+          <XAxis
+            dataKey={xAxisKey}
+            tick={axisStyle}
             tickMargin={10}
             stroke={isDarkMode ? "#fff" : "var(--foreground)"}
           />
-          <YAxis 
-            tick={axisStyle} 
+          <YAxis
+            tick={axisStyle}
             stroke={isDarkMode ? "#fff" : "var(--foreground)"}
           />
-          <Tooltip 
-            contentStyle={{ 
+          <Tooltip
+            contentStyle={{
               backgroundColor: "var(--card)",
               color: "var(--card-foreground)",
               borderRadius: "8px",
               boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
-              border: "1px solid var(--border)"
-            }} 
+              border: "1px solid var(--border)",
+            }}
           />
           <Legend />
           {dataKeys.map((dataKey) => (
