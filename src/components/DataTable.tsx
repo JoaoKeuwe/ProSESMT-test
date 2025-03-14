@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import {
   Table,
@@ -11,10 +10,10 @@ import {
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
-import { 
-  Pagination, 
-  PaginationContent, 
-  PaginationItem, 
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
 } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -67,7 +66,7 @@ function DataTable<T>({
   }, [data, searchTerm, searchKey]);
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-  
+
   const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -107,10 +106,10 @@ function DataTable<T>({
               <ChevronLeft className="h-4 w-4" />
             </Button>
           </PaginationItem>
-          
+
           {Array.from({ length: Math.min(5, totalPages) }).map((_, index) => {
             let pageNumber;
-            
+
             if (totalPages <= 5) {
               pageNumber = index + 1;
             } else if (currentPage <= 3) {
@@ -124,7 +123,7 @@ function DataTable<T>({
               if (index === 0) pageNumber = 1;
               if (index === 4) pageNumber = totalPages;
             }
-            
+
             return (
               <PaginationItem key={index}>
                 <Button
@@ -137,12 +136,14 @@ function DataTable<T>({
               </PaginationItem>
             );
           })}
-          
+
           <PaginationItem>
             <Button
               variant="outline"
               size="icon"
-              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+              onClick={() =>
+                setCurrentPage(Math.min(totalPages, currentPage + 1))
+              }
               disabled={currentPage === totalPages}
             >
               <ChevronRight className="h-4 w-4" />
@@ -166,7 +167,7 @@ function DataTable<T>({
           />
         </div>
       </div>
-      
+
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -206,7 +207,7 @@ function DataTable<T>({
           </TableBody>
         </Table>
       </div>
-      
+
       {renderPagination()}
     </Card>
   );
